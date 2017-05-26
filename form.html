@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>sales</title>
+<style>
+fieldset
+    {font-size: 40px;
+    border: 2px solid black;}
+	fieldset:hover{
+	background-color:red;
+	}
+	h1{font-size:40px;
+	background-color:red;
+	}
+	.first
+	{background-color:blue;
+	}
+.second
+{background-color:green;
+	}
+</style>
+</head>
+<body>
+<h1>Please take a moment to fill out this customer survey</h1>
+<form>
+<fieldset class="first">
+<label for "name">name <input type="text" name="name"required/><label>
+<label>city <input type="text" name="city"value="Lakewood"/><label>
+<label>age<input type="number" name="number"/></label>
+<label>date<input type="date" name="date"/></label>
+<label for "e-mail">enter your e-mail <input type="e-mail" name="e-mail"/><label>
+</fieldset>
+<fieldset class="second">
+<label>please rate this restaurant<input type="range" name="rating" min="0" max="10" required value="8"/></label>
+
+<label>comments are always appreciated<textarea name="comments"></textarea></label>
+
+</fieldset>
+<input type="submit">
+<br>
+</form>
+</body>
+</html>
