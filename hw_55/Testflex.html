@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+
+    
+<style>
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    max-width:1300px;
+    margin:0 auto;
+    text-decoration: none;
+
+}
+footer
+{
+  background-color:black;
+color:white;
+position:fixed;
+bottom:0px;
+right:0px;
+left:0px;
+height:60px;  
+}
+footer p {
+    text-indent:15%;
+}
+
+nav
+{background-color:black;
+color:white;
+position:fixed;
+top:0px;
+right:0px;
+left:0px;
+height:60px;
+
+}
+
+
+
+li{ text-decoration: none;
+display:inline-block;
+font-size: 25px;
+
+}
+a{color: white;}
+li:first-child{ margin-left:15%;}
+li:hover{color:red; 
+text-decoration: underline;
+ }
+ 
+
+ .title{
+    background-color: lightskyblue;
+     width:1300px;
+     height:200px;
+     padding-top:75px;
+     padding-bottom:75px;
+border-style: hidden;
+ }
+ .title p{text-align:center;
+ }
+ #sign{
+     background-color: lightskyblue;
+width: 1300px;
+height:150px;
+padding-top:50px;
+padding-bottom: 50px;
+text-align: center;
+border-radius:18px;
+ }
+ form input{text-align: center;
+ }
+ #tab{ 
+   margin-left: 200px;
+   margin-right: 200px;
+   margin: 0 auto;
+ }  
+ td:first-child{
+     font-style: bold;
+ } 
+ td {
+     text-justify: right;
+ }
+ tr:hover{color:blue;}
+ th, td {
+display:table-cell;
+border:1px solid black;}
+
+#products {
+    display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+section{
+    flex-basis: 200px;
+}
+#products p {text-align:justify; }
+ 
+  h1{margin: auto 0;
+ text-align:center;
+     text-transform:uppercase;
+ }
+ h4{font-size: 40px;}
+
+ h2{margin: auto 0;
+ text-align:center;
+ font-size: 40px;}
+
+img,video {width:300px;
+} 
+
+
+ p span{font-style:italic;}
+ div p{text-align: justify;
+}
+
+ div h3{text-align: center;}
+
+table p{margin: auto 0;
+font-size: 60px;}
+ 
+ #b{border-right: 2px solid black;
+ height:100%;}
+
+ @media screen and (max-width: 999px)
+ { .title{width:100%;}
+     #sign{
+         max-width: 80%;
+        height:200px;
+         padding-top: 80px;
+   
+     }
+#sign input{
+text-align: center;
+margin: auto 0;
+     }     
+     #products{
+         display:block;
+     }
+     #b{border-right: hidden;}
+     
+     #tab{
+         max-width: 80%;
+     }
+ }
+ #total{color: red;}
+
+  
+</style>
+  </head>
+    </head>
+   <body> 
+<nav class="topnav">
+    <ul>
+              <li><a href="#Prod">Products</a></li>
+              <li><a href="#Sign">Sign Up</a></li>
+              <li><a href="#f">Financials</a></li>
+              <li><a href="#Abou">About Us</a><li>
+          </ul>
+          
+      </nav>
+
+      <br>
+      <br>
+      <div class="title">
+          <h1>Estuff</h1>
+          <p>A PCS <span>company</span></p>
+      
+      </div>
+      <br>
+      <br>
+      <h4 id="Prod">Products </h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel optio, a earum deleniti, inventore eligendi qui soluta sed commodi, dolorum ut aperiam tenetur!</p>
+   
+      <div   id="products">
+         
+               
+              <section id="b">
+                  <h3>Computers</h3>
+                  <img src=macworld.jpg style="border-right:1px solid #000000;"  >
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas laudantium obcaecati illo quam, consequuntur non vitae voluptates, commodi illum, expedita nesciunt cum?</p>
+                  </section>
+                  
+
+                  <section id="b">
+                  <h3>Choirs</h3>
+                  
+                  <video src="El Hanaar Hazeh.mp4" controls poster="shira.png"> </video>
+                 
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, temporibus sint, nobis, aut ratione harum laudantium optio perferendis tempora, possimus asperiores laboriosam.</p>
+                  </section>
+                
+                  <section>
+                  <h3>Candy</h3>
+                  <img src=candy.png >
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum repellendus neque officia earum, sint. Reiciendis!</p>
+                  </section>
+          </div>
+     
+               
+                  
+            
+<div  id="sign">
+    <h2 id="Sign">Sign Me Up!</h2>
+    <form>
+    
+            <label for="name">name</label>
+            <input id="name" name="name" value="my name" required/>
+           
+    
+               <div>
+            <label for="e-mail"> e-mail </label>
+            <input  id="e-mail" name="e-mail" value="my e-mail" required/>
+             <input  type="submit" value="Sign Me Up!"/>
+            </div>
+        </form>
+</div>
+       <br>   
+      <h4 id="#f"> Financials</h4>
+      <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eius necessitatibus quis optio iusto provident, atque aut adipisci est accusamus architecto aperiam blanditiis quam delectus, quisquam aliquam! Quae, sequi praesentium explicabo eveniet aspernatur molestias a nostrum sit dicta, voluptatem ullam? Tenetur iste molestiae, in autem quod placeat doloremque, officia repellendus earum cumque consequuntur veniam repellat dolorum. Cumque ex minima rerum a accusantium itaque iure harum. Beatae ipsam maxime placeat illo quae a quaerat, doloremque repellendus non, veniam nemo, vero? Dolor nemo molestiae minus earum? Impedit in dolor, accusantium praesentium distinctio eligendi consectetur eum soluta sapiente consequuntur placeat perspiciatis fugiat similique itaque voluptatum saepe sed earum, sint ullam non repudiandae, quos minima iusto. Veniam mollitia ratione natus. Consequatur sapiente cum cupiditate, sint sequi. Tempora veritatis ea maxime accusamus vitae dolorum commodi cumque vero nulla ipsam modi ducimus, voluptatem est sunt voluptates aperiam aliquid exercitationem quam, alias, facilis deserunt provident quis fuga a. Inventore excepturi porro dolor atque. A, nemo repellat doloribus?
+      </h3>
+      <br>
+      <br>
+      <table  id="tab">
+          <h2>Profit By Quarter</h2>
+<tr>
+    <th>Year</th>
+    <th>1st Quarter profits</th>
+    <th>2nd Quarter profits</th>
+    <th>3rd Quater profits</th>
+    <th>4th Quarter profits</th>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>133.65</td>
+            <td>210.43</td>
+            <td>325.76</td>
+            <td>321.21</td>
+        </tr>
+        <tr>
+            <td>2013</td>
+            <td>433.65</td>
+            <td>110.43</td>
+            <td>125.76</td>
+            <td>421.21</td>
+        </tr>
+<tr>
+            <td>2014</td>
+            <td>533.65</td>
+            <td>310.43</td>
+            <td>325.76</td>
+            <td>521.21</td>
+        </tr>
+<tr>
+            <td>2015</td>
+            <td>433.65</td>
+            <td>310.43</td>
+            <td>225.76</td>
+            <td>521.21</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td id="total">15000.56 </td>
+            </tr>
+
+</table>
+<br>
+<br>
+<h2 id="Abou">About Us</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolor minus vitae amet. Optio laboriosam nihil suscipit, voluptatem, saepe dolore temporibus. Aliquid iure laborum, rem libero autem nisi. Quas qui omnis at optio minima blanditiis consequatur aut. Mollitia deleniti libero suscipit, sequi. Dolores doloribus eum blanditiis accusamus assumenda natus, fugiat nobis delectus minus iste necessitatibus porro. Nisi quod consequuntur, inventore nostrum omnis dolor et. Nemo recusandae perspiciatis harum sit suscipit! Odit repellendus tempore totam, esse possimus recusandae placeat, veniam culpa facere veritatis voluptatibus eligendi atque hic facilis ipsum repellat excepturi deleniti vitae beatae, quisquam, similique laborum a dicta. Facere perferendis tempora aspernatur, ab dolorem hic, eum vero possimus aliquid illo fugit enim dignissimos nam ad nesciunt beatae ratione, repudiandae recusandae nisi fugiat! Corrupti sed cupiditate dolorem aliquid sunt pariatur omnis amet. Dolores saepe aliquid nostrum modi ratione a impedit. Libero nesciunt earum, maxime ea. Doloremque iste modi fugiat, officiis nisi. Vero libero doloremque, architecto placeat ex nulla enim, accusamus error quos delectus animi rerum soluta quis tenetur perspiciatis cumque molestiae, est? Obcaecati exercitationem optio, deleniti tempore laborum non. Est optio modi at dicta enim, omnis, officia quisquam fugiat aliquid hic possimus earum accusamus totam nostrum sit eligendi veritatis quia repellendus.</p>
+
+<footer>
+    <p>@ESTUFF2017</p>
+</footer>
+
+    </body>
+
+
+
+    </html>
