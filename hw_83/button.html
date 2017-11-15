@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="ge">Good Evening</h1>
+    <h2 id="h">Hello</h2>
+   
+<button id="button" >Hide </button>
+<button id="button2" >Show </button>
+<script src="tools.js"></script>
+<script>
+    //var text=document.getElementById("ge");
+ var button=pcs.tools.wrap("button");
+  var g= pcs.tools.wrap("ge");
+  button.click(function(){
+      g.hide();
+  });
+  var showButton=pcs.tools.wrap("button2");
+  showButton.click(function()
+      {
+        g.show().pulsate();
+      });
+  
+    </script>
+</body>
+</html>
