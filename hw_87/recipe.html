@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    </head>
+<body>
+<h1>SELECT RECIPE</h1>
+<button id="soup">SOUP</button>
+<button id="noodles">NOODLES</button>
+<button id="chicken">CHICKEN</button>
+<h2 id"=name">
+<img  id="img" src="" />
+<h1>INGREDIENTS</h1>
+<ul id="ul">
+    
+</ul>
+<script src="/jquery-3.2.1.min.js"></script>
+<script>
+    
+    $('button').click(function(){
+        console.log(this.id);
+     $.post("recipe.php",{name:this.id},function(data){
+        var ing= JSON.parse(data);      
+         $('#ul').append('<li>'+ing.ingredient1+'</li>'+
+        '<li>'+ing.ingredient2+'</li>'+
+        '<li>'+ing.ingredient3+'</li>');
+     }).fail(function (xhr, statusCode, statusText) {
+            alert("error: " + statusText);
+        });
+
+// $.getJSON("recipe.php", function(data){
+//     //var loadeddata=JSON.parse(data);   // $.getJSON don't need JSON.parse
+//         //$('img').attr('src',data.image);
+//     console.log(data.ingredient1);
+       
+//     }).fail(function (xhr, statusCode, statusText) {
+//             alert("error: " + statusText);
+//         });
+     });
+
+</script>
+
+</body>
+</html>
