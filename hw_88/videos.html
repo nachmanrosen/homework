@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+ <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+  </head>
+ <body>
+ <h1>Videos of Jewish Music</h1>
+ <ul id="ul">
+
+ </ul>
+ <video></video>
+ <script src="/jquery-3.2.1.min.js"></script>
+ <script>
+ 
+     $.getJSON('video.json',(function(data){
+     
+       data.forEach(function(vid){
+        
+         $('#ul').append('<li>'+vid.title+'</li>'+
+        '</li>'+'<button id="P">Play</button>'+'<br>' );
+        
+         var video=$('video');
+         
+         $(#P).click(function(){
+           //sets  src atrribute to this video's url
+          video.attr("src",vid.url);
+         video[0].play();
+        });
+         
+       });
+     }).fail(function (xhr, statusCode, statusText) {
+            alert("error: " + statusText);
+        }));
+        
+</script>
+ </body>
+ </html>
