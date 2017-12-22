@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+ <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+ <style>
+     div{
+        margin:0 auto;
+     }
+        img{ width:300px;
+         height:300px;
+        }
+         
+     </style>
+  </head>
+ 
+ <body>
+      <h1>Pictures of Kosher Food</h1>
+     <div>
+         <img id="img"> 
+        <div id="title">
+        </div>
+     </div>
+     <button id="prev">Previous</button>
+     <button id="next">Next</button>
+<script src="/jquery-3.2.1.min.js"></script>
+<script>
+/*global $ */
+(function () {
+    "use strict";
+var image=$('#img');
+var div=$('#title');
+var i=0;
+load();
+$('#next').click(function(){
+    
+                i++;
+                div.empty();
+                load();
+                });
+        $('#prev').click(function(){
+        if(i>=1){
+        i--;
+        div.empty();
+        load();
+        }        
+    });
+function load(){
+ $.getJSON('pictures.json',(function(data){
+                
+                image.attr("src",data[i].url);
+                div.append('<p>'+data[i].title+'</p>');
+                }));
+}
+}());
+</script>
+ </body>
+ </html>
