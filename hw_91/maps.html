@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+    <style>
+        html,body,{
+        width:100%;
+        height:100%;
+        padding: 0;
+        margin: 0;
+    }
+  
+        #map{
+        width:500px;
+        height:500px;
+    }
+    
+    </style>
+    
+    </head>
+    
+    <body>
+        <form class="form-horizontal"  >
+        <div class="form-group">
+        <label  class="col-sm-2" >Destination</label>
+    <div class="col-sm-10">
+      <input type="text"  class="form-control" id="search"  >
+    </div>
+  </div>
+    <button id="button">Search</button>
+    </form>
+    <div id="map">
+    </div> 
+    <script src="/jquery-3.2.1.min.js"></script>
+    <script 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHJIy7tjWuzUgQT8GJHEk83YkEGK72VBA ">   
+    </script>
+    <script>
+        /*global$*/
+     (function(){
+         "use strict";
+        var search=$('#search');
+        //var place=search.val();
+        
+    
+    $('#button').click(function(){
+            
+    $.getJSON('http://api.geonames.org/wikipediaSearch?q=yeshiva&maxRows=2&username=slubowsky&type=json&callback=?', function(data){
+        data.forEach(function(info){    
+       var latitute=info.lat;
+       var  longitute=info.lng;
+         console.log(latitute);     //not showing , seems that jsonp not getting data.
+        
+         console.log(latitute);
+        getMap();
+            });
+   
+     
+            });
+    });
+
+ function getMap(){
+         var location = { lat: latitute, lng: longitute },
+         map = new google.maps.Map(
+         document.getElementById('map'),
+            {
+                center: location,
+                zoom: 8
+            }
+        );
+         }
+}());
+
+</script>
+    </body>
+</html>
