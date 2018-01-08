@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+    <style>
+        #arms {
+            position:relative;
+           
+           
+        }
+        #shoes{
+            position:relative;
+            l
+        }
+        img{
+            width:300px;
+            height:300px;
+        }
+        </style>
+      
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+
+    </head>
+
+<body>
+
+<img  id="body" src="/restaurant/images/untitled.bmp">
+<img id="shoes" src="/restaurant/images/shoes.jpg">
+<img src="/restaurant/images/arms.jpg" id="arms">
+<img id="po" src="/restaurant/images/po.jpg">
+<img id="po1" src="/restaurant/images/po1.jpg">
+<img id="po2" src="/restaurant/images/po2.jpg">
+<audio  controls src="Shlomo Carlebach Ana Hashem.mp3"> </audio>
+<script type="text/javascript">
+/*global $*/
+(function () {
+    var al;
+    var sl;
+    var st;
+    var at;
+    var shoes=$('#shoes');
+    var arms=$('#arms');
+    $(drag);
+    
+    function drag(){
+    $('#shoes').draggable();
+    $('#arms').draggable();
+    $('#po').draggable();
+    $('#po1').draggable();
+     $('#po2').draggable();
+    }
+  
+     //get position of images at mouseup event, save as variable and
+    //store  in local storage
+       $('#shoes').mouseup(function(){
+      var shoffset= shoes.offset();
+      localStorage.setItem('shoesleft',  shoffset.left);
+      localStorage.setItem('shoestop',shoffset.top );
+      console.log( shoffset.left);
+       console.log( shoffset.top);
+    });
+    
+    $('#arms').mouseup(function(){
+     var armsoffset=arms.offset();
+     
+    localStorage.setItem('armsleft',  armsoffset.left);
+    
+    localStorage.setItem('armstop',  armsoffset.top);
+       });
+   // $(set);
+    
+    function get(){
+    //retrieve position from local storage
+     al=localStorage.getItem('armsleft');
+     sl=localStorage.getItem('shoesleft');
+    at=localStorage.getItem('armstop');
+     st=localStorage.getItem('shoestop');
+    console.log(st);
+    console.log(sl);
+    console.log(al);
+
+    //change css to stored position
+    if (typeof al !=='undefined'&&typeof sl !=='undefined'){
+    arms.css({ 'left':al, 'top':at});
+    
+   
+    shoes.css({ 'left':sl, 'top':st});
+    
+    }
+    }
+    $(get);
+
+    
+     //check if variable is defined.
+    $(paste);
+      //check if variable is defined.
+function paste(){
+    if (typeof al !=='undefined'&&typeof sl !=='undefined'){
+    //change css to stored position
+    $('#arms').css({ 'left':al, 'top':at});
+    
+   
+    $('#shoes').css({ 'left':sl, 'top':st});
+    }
+}
+}());
+    </script>
+</body>
+</html>
