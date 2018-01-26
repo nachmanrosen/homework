@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+ <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+ <style>
+    #ta{ width:1200px;
+      height:400px;
+      text-align:left;
+      background-color: lightblue;
+      border:1px solid lightblue;
+      }
+        img{ width:200px;
+         height:200px;
+        }
+        p,form,textarea,input{
+          font-size:30px;
+        }
+        body{
+          margin-left: 100px;
+        }
+       
+          
+       #submit,#clear{
+            width:120px;
+            height:50px;
+        }
+          #previous{
+            width:150px;
+            height:50px;
+        } 
+            
+         
+     </style>
+  </head>
+ 
+ <body>
+
+ <h1>Halacha Corner (Askenazic Practice)</h1>
+  <p>For learning purposes only, all shailos should be asked to a Rov<p> 
+   
+ <p>Case 3:A dairy knife was used to cut meat. May one eat the meat? Can one continue to use the knife for dairy?</p>
+ <p>Source:Yoreh De'ah 94:7, Chochmas Odom 47:1-4 </p>
+ <img src="">
+ <img src="">
+ <img src="">
+<br>
+<br>
+<p>Was the dairy knife used with hot dairy in the last 24 hours (ben-yomo)?</p>
+<form name="myform">
+ <input type="radio" name="by" id="mby" value="yes" />Yes<br>
+ <input type="radio" name="by" id="mnby" value="no" />No<br>
+ <input type="radio" name="by" id="dkby" value="no" />Don't Know<br>
+<br>
+ <p>Was the meat scalding hot (yad soledes)?</p>
+ <input type="radio" name="h" id="h" value="yes" />Yes<br>
+ <input type="radio" name="h" id="nh" value="no" />No<br>
+ <br>
+ <p>Was the volume of the meat 60 times the volume of the knife (not including the handle)?</p>
+ <p>Note: if one is sure that only part of the knife cut the meat, then the meat has to be only sixty times that part of the knife.</p>
+ <input type="radio" name="s" id="s" value="yes" />Yes<br>
+ <input type="radio" name="s" id="ns" value="no" />No<br>
+ <br>
+ <button type="button" id="submit">Submit</button>
+  <button type="button" id="clear">Clear</button>
+  <button type="button" id="previous">Previous</button>
+ 
+  </form>
+
+  
+<div id="q">
+  </div>
+  <br>
+  <br>
+  <textarea id="ta">
+    
+  </textarea>
+  <script src="/jquery-3.2.1.min.js"></script>
+<script>
+  (function() {
+     var ta=document.getElementById('ta');
+     var newtext;
+     var hot=document.getElementById('h');
+    var notHot=document.getElementById('nh');
+     var mby=document.getElementById('mby');
+     var mnby=document.getElementById('mnby');
+     var sixty=document.getElementById('s');
+     var notSixty=document.getElementById('ns');
+
+$('#submit').click(function(){
+      ta.value="";
+//empties textarea
+ if(sixty.checked){
+   if(notHot.checked){
+         newtext="The meat should be thoroughly rinsed off and scrubbed to remove any residue that may have been on the dairy knife. It is preferable that a small section surrounding the area where the knife cut the meat should be removed from the meat. If the meat was a little bit warm, the knife must be stuck in the ground 10 times.";
+     }
+     else{
+     newtext="A thin section (k'dei klipah) surrounding the area where the knife cut the meat should be removed from the meat, because the taste of the knife is concentrated in the area where the knife cut. The rest of the meat is permitted because of bitul b'shishim. The knife needs to be kashered with boiling hot water (the taste of meat in the knife isn't batel).";
+ }
+}
+ else if(notSixty.checked) {
+    
+      
+     if(notHot.checked){
+         newtext="The meat should be thoroughly rinsed off and scrubbed to remove any residue that may have been on the dairy knife. It is preferable that a small section surrounding the area where the knife cut the meat should be removed from the meat. If the meat was a little bit warm, the knife must be stuck in the ground 10 times.";
+     }
+     else if(hot.checked&&mby.checked){
+         newtext="All of the meat is prohibited, because the pressure of the knife spreads the dairy taste throughout the meat. The knife must be kashered with boiling hot water before using.";
+     }
+     else if(hot.checked&&(nmby.checked||knby.checked)){
+       newtext="A thin section (k'dei klipah) surrounding the area where the knife cut the meat should be removed from the meat because there may have been a small amount of dairy residue stuck to the knife. The rest of the meat is permitted. The minhag is that the knife should be kashered with boiling hot water before using. ";
+     }
+
+     }
+     //appends newtext to textarea
+      ta.value += newtext;
+     event.preventDefault();
+     });
+
+$('#clear').click(function(){
+  ta.value="";
+ });
+ $('#previous').click(function(){
+  location('kashrus2.html');
+ });
+  }());
+  </script>
+  </body>
+</html>
+ 
