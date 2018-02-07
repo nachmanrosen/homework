@@ -1,0 +1,21 @@
+
+  <h1>
+   Choose Categories
+  </h1>
+  
+  <li *ngFor="let category of categories ">
+    {{category.name}}
+    <button (click)="getItems(category)"></button>
+  </li>
+  <div *ngIf="selectedCategory">
+    <ul >
+      <li *ngFor="let item of selectedCategory.items" >
+        {{item.name}}
+        {{item.price}}
+      </li>
+      </ul>
+   <div *ngIf="selectedCategory.items.length==0">
+     <p>Sorry, no items</p>
+     </div>
+  </div>
+
