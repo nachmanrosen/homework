@@ -1,0 +1,20 @@
+<p>
+ 
+</p>
+<ul >
+ <li *ngFor ="let user of users"> 
+   {{user.name}}
+  <button (click)="getUser(user)">Select</button>
+  </li>
+  <div *ngIf="selectedUser">
+    <ul >
+      <li *ngFor="let post of selectedUser.posts" >
+
+    Post: {{post.text}} <br>
+    Comments:
+    {{post.comments}}
+
+
+   </li>
+   
+    </ul>
