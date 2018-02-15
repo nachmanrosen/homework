@@ -1,0 +1,24 @@
+
+
+  <form >
+        <div>
+            <label for="first">Name</label>
+             <input #nameBox >
+             <button (click)="add(nmaeBox.value); nameBox.value=''">
+        </div>
+        
+            
+        <div>
+            <label for="email">Email</label>
+             <input #emailbox >
+              <button (click)="add(emailbox.value); emailbox.value=''">
+            
+        </div>
+        <div>
+            <label for="phone">Phone</label>
+             <input #phonebox >
+              <button (click)="add(phonebox.value); phonebox.value=''">
+
+        </div>
+    </form>
+
