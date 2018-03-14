@@ -1,0 +1,18 @@
+{
+  "name": "useconnect",
+  "version": "1.0.0",
+  "description": "explore connect",
+  "main": "middleware.js",
+  "scripts": {
+    "start": "nodemon middleware.js"
+  },
+  "keywords": [
+    "connect",
+    "pcs"
+  ],
+  "author": "me",
+  "license": "MIT",
+  "dependencies": {
+    "connect": "^3.6.6"
+  }
+}
