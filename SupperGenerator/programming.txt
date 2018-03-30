@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+ <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+ <style>
+    #ta{ width:1200px;
+      height:600px;
+      text-align:center;
+    }
+        img{ width:200px;
+         height:200px;
+        }
+        p,form,textarea,input{
+          font-size:30px;
+        }
+         
+     </style>
+  </head>
+ 
+ <body>
+
+ <h1>Programming Corner</h1>
+  
+   
+ <p></p>
+ <img src="img/pasta.jpg">
+ <img src="img/untitled.jpg">
+ <img src="img/cheese.jpg.png">
+<br>
+<br>
+<p>What </p>
+<form name="myform">
+ <input type="radio" name="pl" id="d" />Database<br>
+ <input type="radio" name="pl" id="s"  />Server Side<br>
+<input type="radio" name="pl" id="b" />Browser Side<br>
+<br>
+ 
+  </form>
+<div id="choices">
+  </div>
+  <div id="charif" >
+    
+    </div>
+<div>
+  <br>
+  <br>
+  <textarea id="ta">
+  </textarea>
+  
+</div>
+<script src="/jquery-3.2.1.min.js"></script>
+<script>
+  (function() {
+    var newtext;
+    var charif=$('#charif');
+    var choices=$('#choices');
+    var ta=document.getElementById('ta');
+$('#submit').click(function(){
+ 
+  ta.value="";
+  //empties textarea
+  
+  if(document.getElementById('pl').checked &&document.getElementById('by').checked) {
+    //add to html a new question with radio buttons using appendTo
+    $('<form>'+'<p>Was both the food and the pot hot(yad soledes)?</p>'+'<input type="radio" id="heat" value="yes" />Yes'+'<br><input type="radio"  id="cold" value=" no" />No'+'<br>'+'</form>')
+    .appendTo(hot) 
+    .click(function(event){
+             ta.value="";
+             if(document.getElementById('heat').checked) {
+                  newtext="Since both were hot(yad soledes you may not add cheese to the parve food. However, if bedieved cheese was added to them they may be eaten.";
+             }
+              else if (document.getElementById('cold').checked) {
+                 newtext="Because of the law of Nat bar Nat the parve food(noodles) may be eaten with cheese. This is Nat bar Nat since the meat taste was first transfered to the pot and then transfered to the parve food.";
+                 
+         }
+         ta.value += newtext;
+         event.preventDefault();
+       });
+  }
+  else if(document.getElementById('pl').checked &&document.getElementById('aby').checked) {
+        newtext="The noodles may be eaten with cheese. (note: if a sharp parve food was used and the food and the pot were yad soledes one may not eat the food with cheese";
+        
+}else if(document.getElementById('c').checked) {
+  
+            if(document.getElementById('by').checked){
+           newtext="Since the parve food(noodles) were cooked in a pot used with meat in the last 24hrs(ben yomo), you may not be add cheese to them. However, if bedieved cheese was added to them they may be eaten. (Askenazim follow the Rema who is stringent in Nat bar Nat when cooked)";
+            }
+            else  {  newtext="";
+          //add to html a new question with radio buttons using appendTo
+           $('<form>'+'<p>Was the parve food a sharp food, like onions or garlic, or were spices added that give a noticeable spicy flavor? </p>'+'<input type="radio" id="ch" value="yes" />Yes'+'<br><input type="radio"  id="nch" value="no"/>No'+'<br>'+'</form>')
+           .appendTo(charif)
+           .click(function(event){
+             
+              ta.value="";
+                if(document.getElementById('ch').checked) {
+                  newtext="Since the food is charif, it doesn't matter that the pot has not been used in 24hrs and the parve food may not be eaten with cheese";
+             }
+              else if (document.getElementById('nch').checked) {
+                  newtext="Since the pot was not used with meat in the last 24 hrs, the parve food may be eaten with cheese. However, one should not on purpose cook parve in a non ben yomo pot in order to eat the parve food with cheese"; 
+           }//appends newtext from this click to textarea
+               ta.value += newtext;
+            event.preventDefault();
+         });
+    }        
+}
+//appends newtext to textarea
+ ta.value += newtext;
+ event.preventDefault();
+});
+ 
+ $('#clear').click(function(){
+  ta.value="";
+  hot.empty();
+  charif.empty();
+ });
+
+
+  }());
+  </script>
+  </body>
+  </html>

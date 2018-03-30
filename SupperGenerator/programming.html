@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>form</title>
+ <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+ <style>
+      body{
+          margin-left: 120px;
+        }
+    #ta{ 
+     margin:0 auto;
+      width:1200px;
+      height:600px;
+      text-align:center;
+      background-color:lightblue;
+     
+    }
+        
+        p,form,textarea,input{
+          font-size:30px;
+        }
+        #intro{
+           
+            text-align: left;
+           
+            width:1000px;
+            height:300px;
+            font-size: 25px;
+            background-color:lightgreen;
+             
+        }
+        #data,#brow,#serv{
+            background-color: lightyellow;
+        }
+         
+     </style>
+  </head>
+ 
+ <body>
+
+ <h1>Web Development Languages</h1>
+ 
+<br>
+<div id="intro">
+    <p>There are many languages used by web developers. Here we will divide them into 3 categories: Database, Server side, and Browser side. A server is a computer program that provides a service to another computer program (and its user). A browser is a program with a graphical user interface for displaying HTML files, used to navigate the World Wide Web. Please select the one you would like to learn about. </p>
+</div>
+<form name="myform">
+ <input type="radio" name="pl" id="db" value="y" />Database<br>
+
+ <input type="radio" name="pl" id="s" value="n" />Server Side<br>
+ 
+<input type="radio" name="pl" id="b" value="a"/>Browser Side<br>
+<br>
+
+ <div id="data"></div>
+ <div id="serv"></div>
+ <div id="brow"></div>
+<br>
+ <button type="button" id="submit">Submit</button>
+  <button type="button" id="clear">Clear</button>
+  </form>
+  
+<div id="choices">
+  </div>
+ 
+  <br>
+  <br>
+  <textarea id="ta">
+  </textarea>
+  
+</div>
+<script src="/jquery-3.2.1.min.js"></script>
+<script>
+  (function() {
+    var newtext;
+    var db=document.getElementById('db');
+    var server=document.getElementById('s');
+    var browser=document.getElementById('b');
+    var choices=$('#choices');
+    var ta=document.getElementById('ta');
+$('#submit').click(function(){
+ 
+  ta.value="";
+  //empties textarea
+  
+  if(db.checked)  {
+    //add to html a new question with radio buttons using appendTo
+    $('<form>'+'<p>Select one</p>'+'<input type="radio" id="sql" value="yes" />MySQL'+'<br><input type="radio"  id="mongo" value=" no" />Mongo'+'<br>'+'</form>')
+    .appendTo('#data') 
+    .click(function(event){
+             ta.value="";
+             if(document.getElementById('sql').checked) {
+                  newtext=" MySQL is a database that displays data visualy with rows and columns. The data can be managed and analyzed using sql queries.";
+             }
+              else if (document.getElementById('mongo').checked) {
+                 newtext="Mongo is a database that displays data in the form of JSON, which means JavaScript Object Notation";
+         }
+         ta.value += newtext;
+         event.preventDefault();
+       });
+  }
+ 
+else if(server.checked) {
+  
+            
+          //add to html a new question with radio buttons using appendTo
+           $('<form>'+'<p>Select One </p>'+'<input type="radio" id="php" value="yes" />PHP'+'<br><input type="radio"  id="node" value="no"/>Node'+'<br>'+'</form>')
+           .appendTo('#serv')
+           .click(function(event){
+             
+              ta.value="";
+                if(document.getElementById('php').checked) {
+                  newtext="PHP ( Hypertext Preprocessor) is a scripting language that is especially suited for web development and can be used to connect to a database, such as MySQL.";}
+              else if (document.getElementById('node').checked) {
+                  newtext=" Node.js lets developers use JavaScript for server-side scripting  to produce web page content before the page is sent to the user's web browser."; 
+           }//appends newtext from this click to textarea
+               ta.value += newtext;
+            event.preventDefault();
+         });
+            
+
+}
+
+else if(browser.checked) {
+    //add to html a new question with radio buttons using appendTo
+           $('<form>'+'<p>Select One </p>'+'<input type="radio" id="js" value="yes" />JavaScript'+'<br><input type="radio"  id="jquery" value="no"/>JQuery'+'<br>'+'</form>')
+           .appendTo('#brow')
+           .click(function(event){
+             
+              ta.value="";
+                if(document.getElementById('js').checked) {
+                  newtext="JavaScript is a language that allows you to access and modify elements in the HTML, making the browser interactive. ";}
+              else if (document.getElementById('jquery').checked) {
+                  newtext=" JQuery makes it easier to do many common JavaScript takss."; 
+           }//appends newtext from this click to textarea
+               ta.value += newtext;
+            event.preventDefault();
+         });
+            
+ 
+ }
+});
+ $('#clear').click(function(){
+  ta.value="";
+  choices.empty();
+  $('#data').empty();
+ $('#serv').empty();
+  $('#brow').empty();
+ });
+
+
+  }());
+  </script>
+  </body>
+  </html>
