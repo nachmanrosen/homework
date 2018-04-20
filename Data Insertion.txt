@@ -1,0 +1,5 @@
+INSERT INTO Services ( [Child ID], [Service Date], [Start Time], [End Time], Comments, [Therapist ID], [Date received], [Missed Session ID] )
+SELECT s.[Child ID], e.[Service Date], e.[Start Time], e.[End Time], e.[Service Type], t.[Therapist ID], Date() AS Expr2, m.[Missed Session ID]
+FROM ((Excel AS e LEFT JOIN [Studend List] AS s ON e.[Child Name]=(s.[First Name] & ' ' & s.[Last Name])) 
+LEFT JOIN [Missed Session Type] AS m ON e.[How Provided]=m.[Missed Session Defined]) 
+LEFT JOIN Therapist AS t ON (t.[Service Name]=e.[Service Name]) AND (t.[Therapist Name2]=e.Provider);
