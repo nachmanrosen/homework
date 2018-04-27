@@ -1,0 +1,16 @@
+//remove textIn() query
+UPDATE [Current Month] SET Field6 = LEFT([Field6],InStr([Field6],"(")-1)
+WHERE Instr([Field6],"(")>0;
+
+//Extract first name from fullname:
+UPDATE [Current Month] SET [First Name] = MID([Field4],InStr([Field4]," "));
+
+//Extract last name:
+UPDATE [Current Month] SET [Last Name] = LEFT([Field4],InStr([Field4]," ")-1)
+WHERE Instr([Field4]," ")>0;
+
+//Insert TherapistID
+UPDATE [Current Month] AS c LEFT JOIN Therapist AS t ON (c.[Field24]=t.[Therapist name]) AND (c.field6=t.[Service Name]) SET c.[Therapist ID] = t.[Therapist ID];
+
+//Add comma 
+UPDATE [Current Month] SET Field24 = replace(Field24," ",", ",1);
