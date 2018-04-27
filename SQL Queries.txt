@@ -1,16 +1,52 @@
-//remove textIn() query
+//remove textIn() (MS Access) query 
 UPDATE [Current Month] SET Field6 = LEFT([Field6],InStr([Field6],"(")-1)
 WHERE Instr([Field6],"(")>0;
 
-//Extract first name from fullname:
+//Extract first name from fullname (MS Access)
 UPDATE [Current Month] SET [First Name] = MID([Field4],InStr([Field4]," "));
 
-//Extract last name:
+//Extract last name (MS Access)
 UPDATE [Current Month] SET [Last Name] = LEFT([Field4],InStr([Field4]," ")-1)
 WHERE Instr([Field4]," ")>0;
 
-//Insert TherapistID
+//Insert TherapistID (MS Access)
 UPDATE [Current Month] AS c LEFT JOIN Therapist AS t ON (c.[Field24]=t.[Therapist name]) AND (c.field6=t.[Service Name]) SET c.[Therapist ID] = t.[Therapist ID];
 
-//Add comma 
+//Add comma (MS Access)
 UPDATE [Current Month] SET Field24 = replace(Field24," ",", ",1);
+
+//subquery
+SELECT MIN(UnitPrice),MAX(UnitPrice), AVG(UnitPrice), SUM(UnitPrice), SupplierID
+FROM products
+WHERE(SELECT AVG(UnitPrice))>15.00
+GROUP BY SupplierID
+
+//create Database with Primary and Foreign Keys:
+CREATE DATABASE recipes
+
+use recipes;
+CREATE TABLE ingredients
+(name_ing varchar(20),
+ calories int,
+ PRIMARY KEY(name_ing)
+);
+
+use recipes;
+CREATE TABLE recipes
+(name_r varchar(20),
+ description varchar(20),
+ instructions varchar(1000),
+ PRIMARY KEY(name_r)
+ );
+
+
+CREATE TABLE Recipe_ingredients
+(id int AUTO_INCREMENT,
+name_r varchar(20),
+ name_ing varchar(20),
+name_ing2 varchar(20)
+   CONSTRAINT fk_r FOREIGN KEY(name_r) REFERENCES recipes (name_r) on DELETE CASCADE,
+ CONSTRAINT fk_i FOREIGN KEY(name_ing) REFERENCES ingredients (name_ing) on UPDATE CASCADE,
+CONSTRAINT fk_i2 FOREIGN KEY(name_ing2) REFERENCES ingredients (name_ing) on UPDATE CASCADE,
+ PRIMARY KEY(id)
+ );
