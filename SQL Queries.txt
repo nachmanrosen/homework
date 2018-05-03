@@ -15,6 +15,23 @@ UPDATE [Current Month] AS c LEFT JOIN Therapist AS t ON (c.[Field24]=t.[Therapis
 //Add comma (MS Access)
 UPDATE [Current Month] SET Field24 = replace(Field24," ",", ",1);
 
+// Data Reconciliation (MS Access) of two tables, RERQ and cm. The first query is for units that match. The second query is for units //that don't match.
+//Field32 is the unit column in the cm table.
+UPDATE [Reconcling Elwyn 2018]  AS RERQ 
+INNER JOIN [Current Month] AS cm ON RERQ.[Therapist ID]=cm.[Therapist ID]
+AND RERQ.Discipline=cm.Discipline AND RERQ.[Service Date]=cm.Field8
+AND  (RERQ.[Last Name] & " " & RERQ.[First Name])=cm.Field4
+ SET [Elwyn Units]= Units, [Elwyn Paid]= TRUE
+WHERE RERQ.Units=cm.[Field32]
+
+UPDATE [Reconcling Elwyn 2018]  AS RERQ 
+INNER JOIN [Current Month] AS cm ON RERQ.[Therapist ID]=cm.[Therapist ID]
+AND RERQ.Discipline=cm.Discipline AND RERQ.[Service Date]=cm.Field8
+AND  (RERQ.[Last Name] & " " & RERQ.[First Name])=cm.Field4
+ SET  [Elwyn Units]= cm.[Field32], [Elwyn Rejected]=(RERQ.Units-cm.[Field32])
+WHERE RERQ.Units <>cm.[Field32]
+
+
 //subquery
 SELECT MIN(UnitPrice),MAX(UnitPrice), AVG(UnitPrice), SUM(UnitPrice), SupplierID
 FROM products
