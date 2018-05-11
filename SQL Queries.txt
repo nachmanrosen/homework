@@ -31,6 +31,15 @@ AND  (RERQ.[Last Name] & " " & RERQ.[First Name])=cm.Field4
  SET  [Elwyn Units]= cm.[Field32], [Elwyn Rejected]=(RERQ.Units-cm.[Field32])
 WHERE RERQ.Units <>cm.[Field32]
 
+//Find rows in table1 that don't match  the data in table2 and in those rows set column NoMatch to be true (MS Access)
+UPDATE [Current Month] AS cm LEFT JOIN [Reconcling Elwyn Report Query] AS RERQ 
+ON RERQ.[Service Date]=cm.Field8 And RERQ.[Therapist ID]=cm.[Therapist ID] And (RERQ.[Last Name] & " " & RERQ.[First Name])=cm.Field4 And CStr(Nz(Hour(RERQ.[End Time])))=cm.Field14 And CStr(Nz(Minute(RERQ.[End Time])))=cm.Field15 
+SET NoMatch = TRUE
+WHERE RERQ.[Service Date] IS NULL Or RERQ.[Therapist ID] Is NULL Or (RERQ.[Last Name] & " " & RERQ.[First Name]) IS NULL Or Hour(RERQ.[End Time]) IS NULL Or Minute(RERQ.[End Time]) IS NULL;
+
+//extract hour and minute from data field and convert to string to compare with text on a different table(MS Access)
+CStr(Nz(Hour(RERQ.[End Time])))=cm.Field14
+CStr(Nz(Minute (RERQ.[End Time])))=cm.Field15
 
 //subquery
 SELECT MIN(UnitPrice),MAX(UnitPrice), AVG(UnitPrice), SUM(UnitPrice), SupplierID
