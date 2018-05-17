@@ -21,13 +21,17 @@ UPDATE [Reconcling Elwyn 2018]  AS RERQ
 INNER JOIN [Current Month] AS cm ON RERQ.[Therapist ID]=cm.[Therapist ID]
 AND RERQ.Discipline=cm.Discipline AND RERQ.[Service Date]=cm.Field8
 AND  (RERQ.[Last Name] & " " & RERQ.[First Name])=cm.Field4
+And CStr(Nz(Hour(RERQ.[End Time])))=cm.Field14 
+And CStr(Nz(Minute(RERQ.[End Time])))=cm.Field15 
  SET [Elwyn Units]= Units, [Elwyn Paid]= TRUE
-WHERE RERQ.Units=cm.[Field32]
+WHERE RERQ.Units=cm.[Field32] And RERQ.[Elwyn Paid]=False;
 
 UPDATE [Reconcling Elwyn 2018]  AS RERQ 
 INNER JOIN [Current Month] AS cm ON RERQ.[Therapist ID]=cm.[Therapist ID]
 AND RERQ.Discipline=cm.Discipline AND RERQ.[Service Date]=cm.Field8
 AND  (RERQ.[Last Name] & " " & RERQ.[First Name])=cm.Field4
+And CStr(Nz(Hour(RERQ.[End Time])))=cm.Field14 
+And CStr(Nz(Minute(RERQ.[End Time])))=cm.Field15 
  SET  [Elwyn Units]= cm.[Field32], [Elwyn Rejected]=(RERQ.Units-cm.[Field32])
 WHERE RERQ.Units <>cm.[Field32]
 
